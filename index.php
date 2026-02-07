@@ -33,10 +33,16 @@
                 <td><a href="MySQL String functions/ascii_output.php">View Output</a></td>
             </tr>
             <tr>
-                <td>CHAR()</td>
-                <td>Returns the character based on the ASCII code.</td>
-                <td>SELECT CONCAT(lastname, ' is ', CHAR(97), ' student from ', program) AS student_program;</td>
-                <td><a href="MySQL String functions/char_output.php">View Output</a></td>
+                <td>CHAR_LENGTH()</td>
+                <td>Returns the length of a string (in characters)</td>
+                <td>SELECT firstname, CHAR_LENGTH(firstname) AS firstname_length FROM student_data;</td>
+                <td><a href="MySQL String functions/char_length_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>CHARACTER_LENGTH()</td>
+                <td>Returns the length of a string (in characters)</td>
+                <td>SELECT firstname, CHARACTER_LENGTH(firstname) AS firstname_length FROM student_data;</td>
+                <td><a href="MySQL String functions/character_length_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>CONCAT()</td>
@@ -51,10 +57,40 @@
                 <td><a href="MySQL String functions/concat_ws_output.php">View Output</a></td>
             </tr>
             <tr>
+                <td>FIELD()</td>
+                <td>Returns the index position of a value in a list of values.</td>
+                <td>SELECT firstname,FIELD(firstname, 'Liezel', 'Felaura', 'Irene') AS field_position FROM student_data;</td>
+                <td><a href="MySQL String functions/field_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>FIND_IN_SET()</td>
+                <td>Returns the position of a string within a list of strings.</td>
+                <td>SELECT firstname, FIND_IN_SET(firstname, 'Liezel,Felaura,Irene') AS field_position FROM student_data;</td>
+                <td><a href="MySQL String functions/find_in_set_output.php">View Output</a></td>
+            </tr>
+            <tr>
                 <td>FORMAT()</td>
                 <td>Formats a value with the specified format.</td>
                 <td>SELECT lastname, grade, FORMAT(grade, 1) AS formatted_grade FROM student_data;;</td>
                 <td><a href="MySQL String functions/format_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>INSERT()</td>
+                <td>Inserts a string within a string at the specified position and for a certain number of characters.</td>
+                <td>SELECT firstname, INSERT(lastname, 2, 3, 'xxx') AS modified_lastname FROM student_data;</td>
+                <td><a href="MySQL String functions/insert_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>INSTR()</td>
+                <td>Returns the position of the first occurrence of a string in another string.</td>
+                <td>SELECT firstname, INSTR(lastname, 'e') AS position_of_e FROM student_data;</td>
+                <td><a href="MySQL String functions/instr_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>LCASE()</td>
+                <td>Converts a string to lower-case.</td>
+                <td>SELECT lastname, LCASE(program) AS lowercase_program FROM student_data;</td>
+                <td><a href="MySQL String functions/lcase_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>LEFT()</td>
@@ -65,20 +101,50 @@
             <tr>
                 <td>LENGTH()</td>
                 <td>Returns the length of a string.</td>
-                <td>SELECT lastname, LENGTH(lastname) AS lastname_length FROM student_data;</td>
-                <td><a href="MySQL String functions/len_output.php">View Output</a></td>
+                <td>SELECT firstname, LENGTH(firstname) AS firstname_length FROM student_data;</td>
+                <td><a href="MySQL String functions/length_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>LOCATE()</td>
+                <td>Returns the position of the first occurrence of a substring in a string.</td>
+                <td>SELECT firstname, LOCATE('e', firstname) AS position_of_e FROM student_data;</td>
+                <td><a href="MySQL String functions/locate_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>LOWER()</td>
                 <td>Converts a string to lower-case.</td>
-                <td>SELECT LOWER(program) AS lowercase_program FROM student_data;</td>
+                <td>SELECT lastname, LOWER(program) AS lowercase_program FROM student_data ;</td>
                 <td><a href="MySQL String functions/lower_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>LPAD()</td>
+                <td>Left-pads a string with another string, to a certain length.</td>
+                <td>SELECT firstname, LPAD(firstname, 10, '*') AS padded_firstname FROM student_data;</td>
+                <td><a href="MySQL String functions/lpad_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>LTRIM()</td>
                 <td>Removes leading spaces from a string.</td>
                 <td>SELECT CONCAT(firstname, lastname) AS fullname, CONCAT(firstname, LTRIM(lastname)) AS trimmed_lastname FROM student_data;</td>
                 <td><a href="MySQL String functions/ltrim_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>MID()</td>
+                <td>Extracts a substring from a string (starting at any position).</td>
+                <td>SELECT firstname, MID(firstname, 2, 3) AS mid_name FROM student_data;</td>
+                <td><a href="MySQL String functions/mid_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>POSITION()</td>
+                <td>Returns the position of the first occurrence of a substring in a string.</td>
+                <td>SELECT firstname, POSITION('e' IN firstname) AS position_of_e FROM student_data;</td>
+                <td><a href="MySQL String functions/position_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>REPEAT()</td>
+                <td>Repeats a string as many times as specified.</td>
+                <td>SELECT lastname, REPEAT(CONCAT(lastname, ' '), 3) AS repeated_string FROM student_data;</td>
+                <td><a href="MySQL String functions/repeat_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>REPLACE()</td>
@@ -99,16 +165,16 @@
                 <td><a href="MySQL String functions/right_output.php">View Output</a></td>
             </tr>
             <tr>
+                <td>RPAD()</td>
+                <td>Right-pads a string with another string, to a certain length.</td>
+                <td>SELECT firstname, RPAD(firstname, 10, '*') AS padded_firstname, lastname FROM student_data;</td>
+                <td><a href="MySQL String functions/rpad_output.php">View Output</a></td>
+            </tr>
+            <tr>
                 <td>RTRIM()</td>
                 <td>Removes trailing spaces from a string.</td>
                 <td>SELECT CONCAT(lastname, firstname) AS fullname, CONCAT(RTRIM(lastname), firstname) AS trimmed_lastname FROM student_data;</td>
                 <td><a href="MySQL String functions/rtrim_output.php">View Output</a></td>
-            </tr>
-            <tr>
-                <td>SOUNDEX()</td>
-                <td>Returns a four-character code to evaluate the similarity of two strings.</td>
-                <td>SELECT lastname FROM student_data WHERE SOUNDEX(lastname) = SOUNDEX('Golocino');</td>
-                <td><a href="MySQL String functions/soundex_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>SPACE()</td>
@@ -117,16 +183,40 @@
                 <td><a href="MySQL String functions/space_output.php">View Output</a></td>
             </tr>
             <tr>
+                <td>STRCMP()</td>
+                <td>Compares two strings.</td>
+                <td>SELECT firstname, lastname, STRCMP(firstname, lastname) AS comparison_result FROM student_data;</td>
+                <td><a href="MySQL String functions/strcmp_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>SUBSTR()</td>
+                <td>Extracts a substring from a string (starting at any position).</td>
+                <td>SELECT firstname, SUBSTR(firstname, 1, 3) AS first_three_chars FROM student_data;</td>
+                <td><a href="MySQL String functions/substr_output.php">View Output</a></td>
+            </tr>
+            <tr>
                 <td>SUBSTRING()</td>
-                <td>Extracts some characters from a string.</td>
+                <td>Extracts a substring from a string (starting at any position)</td>
                 <td>SELECT firstname, SUBSTRING(firstname, 1, 3) AS first_three_chars FROM student_data;</td>
                 <td><a href="MySQL String functions/substring_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>SUBSTRING_INDEX()</td>
+                <td>Returns a substring of a string before a specified number of delimiter occurs.</td>
+                <td>SELECT firstname, SUBSTRING_INDEX(firstname, 'e', 1) AS substring_before_first_e FROM student_data;</td>
+                <td><a href="MySQL String functions/substring_index_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>TRIM()</td>
                 <td>Removes leading and trailing spaces (or other specified characters) from a string.</td>
                 <td>SELECT CONCAT(firstname,lastname) AS fullname, CONCAT(firstname, TRIM(lastname)) AS trimmed_lastname FROM student_data;</td>
                 <td><a href="MySQL String functions/trim_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>UCASE()</td>
+                <td>Converts a string to upper-case.</td>
+                <td>SELECT firstname, UCASE(lastname) AS uppercase_lastname FROM student_data;</td>
+                <td><a href="MySQL String functions/ucase_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>UPPER()</td>
@@ -157,26 +247,38 @@
             <tr>
                 <td>ACOS()</td>
                 <td>Returns the arc cosine of a number.</td>
-                <td>SELECT ACOS(-1) AS arc_cosine;</td>
+                <td>SELECT lastname, units, ACOS(units/100) AS arc_cosine FROM student_data;</td>
                 <td><a href="MySQL Numeric functions/acos_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>ASIN()</td>
                 <td>Returns the arc sine of a number.</td>
-                <td>SELECT ASIN(0.5) AS arc_sine;</td>
+                <td>SELECT lastname, grade, ASIN(grade/100) AS arc_sine FROM student_data;</td>
                 <td><a href="MySQL Numeric functions/asin_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>ATAN()</td>
                 <td>Returns the arc tangent of a number.</td>
-                <td>SELECT ATAN(1) AS arc_tangent;</td>
+                <td>SELECT lastname, units, ATAN(units) AS arc_tangent FROM student_data;</td>
                 <td><a href="MySQL Numeric functions/atan_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>ATAN2()</td>
+                <td>Returns the arc tangent of two numbers.</td>
+                <td>SELECT lastname, units, grade, ATAN2(units, grade) AS atan_unit_grades FROM student_data;</td>
+                <td><a href="MySQL Numeric functions/atan2_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>AVG()</td>
                 <td>Returns the average value of an expression.</td>
                 <td>SELECT program, AVG(grade) AS avg_grade FROM student_data GROUP BY program;</td>
                 <td><a href="MySQL Numeric functions/avg_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>CEIL()</td>
+                <td>Returns the smallest integer value that is >= a number.</td>
+                <td>SELECT lastname, grade, CEIL(grade) AS ceil_value FROM student_data ORDER BY grade DESC;</td>
+                <td><a href="MySQL Numeric functions/ceil_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>CEILING()</td>
@@ -193,25 +295,31 @@
             <tr>
                 <td>COS()</td>
                 <td>Returns the cosine of a number.</td>
-                <td>SELECT COS(3) AS cosine_value;</td>
+                <td>SELECT lastname, units, COS(units) AS cosine_value FROM student_data;</td>
                 <td><a href="MySQL Numeric functions/cos_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>COT()</td>
                 <td>Returns the cotangent of a number.</td>
-                <td>SELECT COT(-5) AS cotangent_value;</td>
+                <td>SELECT lastname, grade, COT(RADIANS(grade)) AS cotangent_value FROM student_data;</td>
                 <td><a href="MySQL Numeric functions/cot_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>DEGREES()</td>
                 <td>Converts a value in radians to degrees.</td>
-                <td>SELECT DEGREES(6.283) AS degrees_value;</td>
+                <td>SELECT lastname, grade, DEGREES(RADIANS(grade)) AS degrees_value FROM student_data;</td>
                 <td><a href="MySQL Numeric functions/degrees_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>DIV()</td>
+                <td>Used for integer division.</td>
+                <td>SELECT lastname, units, units DIV 2 AS division_value FROM student_data;</td>
+                <td><a href="MySQL Numeric functions/div_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>EXP()</td>
                 <td>Returns e raised to the power of a specified number.</td>
-                <td>SELECT EXP(2) AS exponential_value;</td>
+                <td>SELECT lastname, units, EXP(units) AS exponential_value FROM student_data;</td>
                 <td><a href="MySQL Numeric functions/exp_output.php">View Output</a></td>
             </tr>
             <tr>
@@ -221,16 +329,40 @@
                 <td><a href="MySQL Numeric functions/floor_output.php">View Output</a></td>
             </tr>
             <tr>
+                <td>GREATEST()</td>
+                <td>Returns the largest value of the list of arguments.</td>
+                <td>SELECT lastname, GREATEST(units, 15) AS greatest_value FROM student_data;</td>
+                <td><a href="MySQL Numeric functions/greatest_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>LEAST()</td>
+                <td>Returns the smallest value of the list of arguments.</td>
+                <td>SELECT lastname, LEAST(grade, 95) AS least_value FROM student_data;</td>
+                <td><a href="MySQL Numeric functions/least_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>LN()</td>
+                <td>Returns the natural logarithm of a number.</td>
+                <td>SELECT lastname, grade, LN(grade) AS ln_value FROM student_data;</td>
+                <td><a href="MySQL Numeric functions/ln_output.php">View Output</a></td>
+            </tr>
+            <tr>
                 <td>LOG()</td>
                 <td>Returns the natural logarithm of a number, or the logarithm of a number to a specified base.</td>
-                <td>SELECT LOG(2, 10) AS log_value;</td>
+                <td>SELECT lastname, units, LOG(units) AS log_value FROM student_data;</td>
                 <td><a href="MySQL Numeric functions/log_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>LOG10()</td>
                 <td>Returns the natural logarithm of a number to base 10.</td>
-                <td>SELECT LOG10(2) AS log10_value;</td>
+                <td>SELECT lastname, units, LOG10(units) AS log10_value FROM student_data;</td>
                 <td><a href="MySQL Numeric functions/log10_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>LOG2()</td>
+                <td>Returns the natural logarithm of a number to base 2.</td>
+                <td>SELECT lastname, units, LOG2(units) AS log2_value FROM student_data;</td>
+                <td><a href="MySQL Numeric functions/log2_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>MAX()</td>
@@ -245,10 +377,22 @@
                 <td><a href="MySQL Numeric functions/min_output.php">View Output</a></td>
             </tr>
             <tr>
+                <td>MOD()</td>
+                <td>Returns the remainder of a number divided by another number.</td>
+                <td>SELECT lastname, grade, MOD(grade, 2) AS mod_value FROM student_data;</td>
+                <td><a href="MySQL Numeric functions/mod_output.php">View Output</a></td>
+            </tr>
+            <tr>
                 <td>PI()</td>
                 <td>Returns the value of PI.</td>
-                <td>SELECT PI() AS pi_value;</td>
+                <td>SELECT lastname, grade, PI() * grade AS pi_value FROM student_data;</td>
                 <td><a href="MySQL Numeric functions/pi_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>POW()</td>
+                <td>Returns the value of a number raised to the power of another number.</td>
+                <td>SELECT lastname, grade, POW(grade, 2) AS squared_grade FROM student_data;</td>
+                <td><a href="MySQL Numeric functions/pow_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>POWER()</td>
@@ -259,13 +403,13 @@
             <tr>
                 <td>RADIANS()</td>
                 <td>Converts a degree value into radians.</td>
-                <td>SELECT RADIANS(180) AS radians_value;</td>
+                <td>SELECT lastname, DEGREES(grade) AS grade_in_degrees, RADIANS(DEGREES(grade)) AS radians_value FROM student_data;</td>
                 <td><a href="MySQL Numeric functions/radians_output.php">View Output</a></td>
             </tr>
             <tr>
                 <td>RAND()</td>
                 <td>Returns a random number.</td>
-                <td>SELECT RAND() AS random_value;</td>
+                <td>SELECT lastname, grade FROM student_data ORDER BY RAND() LIMIT 3;</td>
                 <td><a href="MySQL Numeric functions/rand_output.php">View Output</a></td>
             </tr>
             <tr>
@@ -283,7 +427,7 @@
             <tr>
                 <td>SIN()</td>
                 <td>Returns the sine of a number.</td>
-                <td>SELECT SIN(3) AS sin_value;</td>
+                <td>SELECT lastname, units, SIN(RADIANS(units)) AS sin_value FROM student_data;</td>
                 <td><a href="MySQL Numeric functions/sin_output.php">View Output</a></td>
             </tr>
             <tr>
@@ -301,8 +445,14 @@
             <tr>
                 <td>TAN()</td>
                 <td>Returns the tangent of a number.</td>
-                <td>SELECT TAN(-3) AS tan_value;</td>
+                <td>SELECT lastname, units, TAN(RADIANS(units)) AS tan_value FROM student_data;</td>
                 <td><a href="MySQL Numeric functions/tan_output.php">View Output</a></td>
+            </tr>
+            <tr>
+                <td>TRUNCATE()</td>
+                <td>Returns a number truncated to a specified number of decimal places.</td>
+                <td>SELECT lastname, grade, TRUNCATE(grade, 1) AS truncated_grade FROM student_data;</td>
+                <td><a href="MySQL Numeric functions/truncate_output.php">View Output</a></td>
             </tr>
         </table>
 

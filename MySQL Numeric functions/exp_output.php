@@ -1,21 +1,25 @@
 <?php
 include '../database/db.php';
 
-$sql = "SELECT EXP(2) AS exponential_value;";
+$sql = "SELECT lastname, units, EXP(units) AS exponential_value FROM student_data;";
 $result = $conn->query($sql);
 
 echo "<h2>EXP() Function Output</h2>
-        <br> <p><b>SQL query: </b>SELECT EXP(2) AS exponential_value;</p>
+        <br> <p><b>SQL query: </b>SELECT lastname, units, EXP(units) AS exponential_value FROM student_data;</p>
         <br>";
 
 if ($result->num_rows > 0) {
     echo "<table border='1' cellspacing='0' cellpadding='10'>
             <tr>
+                <th>Last Name</th>
+                <th>Units</th>
                 <th>Exponential Value</th>
             </tr>";
             
             while($row = $result->fetch_assoc()) {
             echo "<tr>
+                    <td>" . $row["lastname"] . "</td>
+                    <td>" . $row["units"] . "</td>
                     <td>" . $row["exponential_value"] . "</td>
                 </tr>";
             }

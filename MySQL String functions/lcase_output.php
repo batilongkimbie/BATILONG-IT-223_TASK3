@@ -1,26 +1,24 @@
 <?php
 include '../database/db.php';
 
-$sql = "SELECT lastname, grade, ASIN(grade/100) AS arc_sine FROM student_data;";
+$sql = "SELECT lastname, LCASE(program) AS lowercase_program FROM student_data;";
 $result = $conn->query($sql);
 
-echo "<h2>ASIN() Function Output</h2>
-        <br> <p><b>SQL query: </b>SELECT lastname, grade, ASIN(grade/100) AS arc_sine FROM student_data;</p>
+echo "<h2>LCASE() Function Output</h2>
+        <br> <p><b>SQL query: </b>SELECT lastname, LCASE(program) AS lowercase_program FROM student_data;</p>
         <br>";
 
 if ($result->num_rows > 0) {
     echo "<table border='1' cellspacing='0' cellpadding='10'>
             <tr>
                 <th>Last Name</th>
-                <th>Grade</th>
-                <th>Arc Sine</th>
+                <th>Lowercase Program</th>
             </tr>";
             
             while($row = $result->fetch_assoc()) {
             echo "<tr>
                     <td>" . $row["lastname"] . "</td>
-                    <td>" . $row["grade"] . "</td>
-                    <td>" . $row["arc_sine"] . "</td>
+                    <td>" . $row["lowercase_program"] . "</td>
                 </tr>";
             }
 

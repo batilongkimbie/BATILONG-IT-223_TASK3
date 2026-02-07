@@ -1,21 +1,25 @@
 <?php
 include '../database/db.php';
 
-$sql = "SELECT LOG(2, 10) AS log_value;";
+$sql = "SELECT lastname, units, LOG(units) AS log_value FROM student_data;";
 $result = $conn->query($sql);
 
 echo "<h2>LOG() Function Output</h2>
-        <br> <p><b>SQL query: </b>SELECT LOG(2, 10) AS log_value;</p>
+        <br> <p><b>SQL query: </b>SELECT lastname, units, LOG(units) AS log_value FROM student_data;</p>
         <br>";
 
 if ($result->num_rows > 0) {
     echo "<table border='1' cellspacing='0' cellpadding='10'>
             <tr>
+                <th>Last Name</th>
+                <th>Units</th>
                 <th>Log Value</th>
             </tr>";
             
             while($row = $result->fetch_assoc()) {
             echo "<tr>
+                    <td>" . $row["lastname"] . "</td>
+                    <td>" . $row["units"] . "</td>
                     <td>" . $row["log_value"] . "</td>
                 </tr>";
             }

@@ -1,11 +1,11 @@
 <?php
 include '../database/db.php';
 
-$sql = "SELECT lastname, grade, ASIN(grade/100) AS arc_sine FROM student_data;";
+$sql = "SELECT lastname, grade, POW(grade, 2) AS squared_grade FROM student_data;";
 $result = $conn->query($sql);
 
-echo "<h2>ASIN() Function Output</h2>
-        <br> <p><b>SQL query: </b>SELECT lastname, grade, ASIN(grade/100) AS arc_sine FROM student_data;</p>
+echo "<h2>POW() Function Output</h2>
+        <br> <p><b>SQL query: </b>SELECT lastname, grade, POW(grade, 2) AS squared_grade FROM student_data;</p>
         <br>";
 
 if ($result->num_rows > 0) {
@@ -13,14 +13,14 @@ if ($result->num_rows > 0) {
             <tr>
                 <th>Last Name</th>
                 <th>Grade</th>
-                <th>Arc Sine</th>
+                <th>Squared Grade</th>
             </tr>";
             
             while($row = $result->fetch_assoc()) {
             echo "<tr>
                     <td>" . $row["lastname"] . "</td>
                     <td>" . $row["grade"] . "</td>
-                    <td>" . $row["arc_sine"] . "</td>
+                    <td>" . $row["squared_grade"] . "</td>
                 </tr>";
             }
 
